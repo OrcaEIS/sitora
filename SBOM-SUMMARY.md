@@ -17,7 +17,7 @@
 - **10 third-party packages**, all optional (schema validation and testing).
 - **All licenses are OSI-approved** and compatible with Apache-2.0 redistribution.
 - **No copyleft (GPL/AGPL/LGPL) dependencies.**
-- **No known vulnerabilities are introduced by the dependency surface** at generation time; verify with `pip-audit` before each release.
+- **The SBOM itself does not assert vulnerability status.** Run `pip-audit` before each release.
 - **Primary component:** `sitora` 0.1.0 (Apache-2.0).
 
 ## 2. Dependency inventory

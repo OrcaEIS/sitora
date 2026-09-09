@@ -50,20 +50,20 @@ open repo (for instance, because the boundary shifted), open an RFC under
 
 ## 2. Contributor License Agreement (CLA)
 
-Every contribution must be covered by a signed CLA. SITORA uses a
-lightweight **individual + corporate CLA** so that contributed schemas,
-evaluator extensions, and Alignment Packs can be reused inside commercial
-OrcaEIS distributions.
+A signed CLA is required for contributions under the intended contribution
+process. SITORA uses a lightweight **individual + corporate CLA** so that
+contributed schemas, evaluator extensions, and Alignment Packs can be reused
+inside commercial OrcaEIS distributions.
 
 1. Open a pull request. Sign the [Individual CLA](./cla/INDIVIDUAL_CLA.md) or, if contributing on behalf of an employer, the [Corporate CLA](./cla/CORPORATE_CLA.md). CLA templates are included in this repository (`/cla`) as starter text.
 2. If your contribution is made on behalf of an employer, a corporate CLA covering the contributing entity is required.
 3. The CLA explicitly covers **patent grants**, **proprietary redistribution**, and **relicensing** by OrcaEIS. Review the full text before signing.
 
-> **TODO (placeholder):** CLA signing is currently manual. A CLA bot / signing service is a future improvement. The templates in `/cla` are starter text, not legal advice — have counsel review before launch.
-
-> **This is strategic guidance, not legal advice.** The CLA text is
-> reviewed by counsel. If you have questions about the agreement,
-> contact legal@orcaeis.com before contributing.
+> **Provisional templates.** CLA signing is currently manual; a CLA bot or
+> signing service is a future improvement. The templates in `/cla` are
+> starter/provisional text pending legal review and are not legal advice.
+> If you have questions about the agreement, contact legal@orcaeis.com
+> before contributing.
 
 ## 3. Developer Certificate of Origin (DCO) — optional
 
@@ -90,7 +90,7 @@ maintainers can use at their discretion.
 ## 5. Pull request checklist
 
 - [ ] CLA signed
-- [ ] Commits signed off (`-s`)
+- [ ] Commits signed off with `-s` (optional; maintainers may request for traceability)
 - [ ] Tests pass: `cd evaluator && python -m pytest`
 - [ ] Schemas validate: `python -m jsonschema` (if schemas changed)
 - [ ] No real customer data, credentials, or PII

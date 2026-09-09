@@ -81,7 +81,7 @@ w(f"- **No runtime dependencies.** The SITORA reference evaluator uses only the 
 w(f"- **{len(order)} third-party packages**, all optional (schema validation and testing).")
 w(f"- **All licenses are OSI-approved** and compatible with Apache-2.0 redistribution.")
 w(f"- **No copyleft (GPL/AGPL/LGPL) dependencies.**")
-w(f"- **No known vulnerabilities are introduced by the dependency surface** at generation time; verify with `pip-audit` before each release.")
+w(f"- **The SBOM itself does not assert vulnerability status.** Run `pip-audit` before each release.")
 w(f"- **Primary component:** `{primary['name']}` {primary['version']} (Apache-2.0).\n")
 
 w("## 2. Dependency inventory\n")

@@ -6,6 +6,69 @@ adheres to [Semantic Versioning](https://semver.org/).
 
 ## [Unreleased]
 
+## [0.1.0-alpha-rc2] — 2026-09-09
+
+Public-release cleanup pass on RC1. No architecture, evaluator, schema,
+example, taxonomy, or commercial-boundary changes. Dependency inventory and
+both SBOMs (CycloneDX 1.6 and SPDX 2.3) are unchanged.
+
+### Removed
+
+- `DISCLOSURE.md` and `OPERATING_SAFETY.md` removed from the public tree.
+  Their substantive commercial-runtime content is not relocated elsewhere in
+  this repository.
+
+### Changed
+
+- `CONTRIBUTING.md`: removed the statement implying the CLA text has already
+  been reviewed by counsel. Preserved the existing statement that the CLA
+  templates in `/cla` are starter/provisional text pending legal review.
+  Kept the CLA required under the intended contribution process; kept DCO
+  sign-off optional (maintainers may request it for traceability).
+- `README.md`: corrected the contribution sentence so DCO sign-off is not
+  described as mandatory. Contributions require a signed CLA under the
+  contribution process; DCO sign-off is optional and may be requested by
+  maintainers for traceability.
+- `SECURITY.md`: removed the hard commitments to acknowledgement within 2
+  business days and triage within 5 business days. Replaced with non-SLA
+  language appropriate for a solo-founder alpha project (acknowledge as
+  promptly as practicable; triage and remediation based on severity, impact,
+  and available maintainer capacity). Private vulnerability-reporting
+  requirement and `security@orcaeis.com` preserved.
+- `GOVERNANCE.md`: removed the commitment that every issue receives a first
+  response within 3 business days and the commitment to review stale issues
+  every 30 days. Replaced with steward-based triage keyed to severity,
+  impact, relevance, and available maintainer capacity.
+- `SBOM-SUMMARY.md`: replaced the assertion that no known vulnerabilities
+  are introduced by the dependency surface at generation time with: "The
+  SBOM itself does not assert vulnerability status. Run `pip-audit` before
+  each release." Dependency inventory unchanged.
+- `generate_sbom_summary.py`: updated the corresponding line so future
+  regenerations produce the corrected summary.
+- `cla/CORPORATE_CLA.md` and `cla/INDIVIDUAL_CLA.md`: reworded the
+  consumer-facing `TODO (placeholder)` marker on the legal-entity
+  replacement note to `Note (before use)`. Substantive warning and
+  legal-review requirement unchanged.
+
+### Validation
+
+- Conformance suite: 16 / 16 passing.
+- Sandbox-safety guard: 8 / 8 passing.
+- Offline demo emits all five statuses
+  (aligned / drifting / incomplete / conflicting / unverifiable).
+- Schema and fixture validation: 7 / 7 passing.
+- CycloneDX 1.6 schema validation: passing.
+- SPDX 2.3 validation (`pyspdxtools`): passing.
+- Naming-discipline check: passing (only `OrcaEIS` / `OrcaTrain`).
+- Open-core boundary scrub: passing.
+
+## [0.1.0-alpha-rc1] — 2026-09-09
+
+First release candidate for `v0.1.0-alpha`. Frozen as annotated tag
+`v0.1.0-alpha-rc1` on commit `370d2273dd14b2ec86425272d98446a1200b11c5`.
+Superseded by `v0.1.0-alpha-rc2` for public release cleanup; RC1 is
+preserved unchanged for reference.
+
 ### Added
 
 - **SITORA Controlled Evaluation Trust Guarantee.** New [`SANDBOX.md`](SANDBOX.md)

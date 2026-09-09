@@ -38,10 +38,12 @@ Schema and specification changes flow through the [RFC process](./rfcs/0000-temp
 
 ## 4. Issue triage
 
-- New issues receive a first response within **3 business days**.
+- Issues are triaged by the steward based on severity, impact, relevance,
+  and available maintainer capacity. No fixed response or review cadence is
+  committed at this stage of the project.
 - Labels: `bug`, `enhancement`, `schema`, `spec`, `security`, `question`,
   `good first issue`.
-- A maintainer is assigned per issue. Stale issues are reviewed every 30 days.
+- A maintainer is assigned per issue when capacity allows.
 
 ## 5. Security disclosure
 

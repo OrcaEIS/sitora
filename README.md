@@ -90,8 +90,9 @@ See [COMMERCIAL_BOUNDARY.md](COMMERCIAL_BOUNDARY.md). In short:
 
 ## Contributing
 
-Contributions require a signed CLA and DCO sign-off. See
-[CONTRIBUTING.md](CONTRIBUTING.md). Schema and spec changes follow the
+Contributions require a signed CLA under the contribution process. DCO
+sign-off is optional and may be requested by maintainers for traceability.
+See [CONTRIBUTING.md](CONTRIBUTING.md). Schema and spec changes follow the
 [RFC process](rfcs/0000-template.md).
 
 ## License

@@ -4,7 +4,7 @@
     "intentId": "obligation-sec-awareness-001",
     "subject": "emp-001",
     "status": "aligned",
-    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "evaluatedAt": "2026-09-09T03:33:14Z",
     "ruleResults": [
       {
         "ruleId": "rule-completed",
@@ -30,7 +30,7 @@
     "intentId": "obligation-sec-awareness-001",
     "subject": "emp-002",
     "status": "drifting",
-    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "evaluatedAt": "2026-09-09T03:33:14Z",
     "ruleResults": [
       {
         "ruleId": "rule-completed",
@@ -56,7 +56,7 @@
     "intentId": "obligation-sec-awareness-001",
     "subject": "emp-003",
     "status": "incomplete",
-    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "evaluatedAt": "2026-09-09T03:33:14Z",
     "ruleResults": [
       {
         "ruleId": "rule-completed",
@@ -78,7 +78,7 @@
     "intentId": "obligation-sec-awareness-001",
     "subject": "emp-004",
     "status": "conflicting",
-    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "evaluatedAt": "2026-09-09T03:33:14Z",
     "ruleResults": [
       {
         "ruleId": "rule-completed",
@@ -106,7 +106,7 @@
     "intentId": "obligation-sec-awareness-001",
     "subject": "emp-005",
     "status": "unverifiable",
-    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "evaluatedAt": "2026-09-09T03:33:14Z",
     "ruleResults": [
       {
         "ruleId": "rule-completed",

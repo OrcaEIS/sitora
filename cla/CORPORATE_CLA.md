@@ -1,6 +1,6 @@
 # Corporate Contributor License Agreement
 
-> **TODO (placeholder):** Replace `[Legal Entity]`, contact email, and
+> **Note (before use):** Replace `[Legal Entity]`, contact email, and
 > effective date with counsel-reviewed values before launch. This is a
 > starter template, not legal advice — have counsel review before use.
 

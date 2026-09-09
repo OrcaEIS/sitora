@@ -28,9 +28,15 @@ Please include:
 
 ## Response process
 
-1. **Acknowledgement** within 2 business days.
-2. **Triage and confirmation** within 5 business days.
-3. A **fix timeline** communicated to the reporter based on severity.
+SITORA is an early-alpha, solo-founder-stewarded project. OrcaEIS does not
+commit to fixed acknowledgement or triage SLAs at this stage.
+
+1. **Acknowledgement.** OrcaEIS will acknowledge reports as promptly as
+   practicable.
+2. **Triage and confirmation.** Reports are triaged based on severity,
+   impact, and available maintainer capacity.
+3. **Remediation and status.** A remediation approach and status updates
+   are communicated to the reporter based on severity.
 4. Coordinated **public disclosure** after a fix is released, crediting the
    reporter (unless they prefer to remain anonymous).
 
