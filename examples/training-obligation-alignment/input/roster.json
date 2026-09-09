@@ -1,0 +1,5 @@
+{
+  "intentId": "obligation-sec-awareness-001",
+  "population": "privileged-access workforce",
+  "subjects": ["emp-001", "emp-002", "emp-003", "emp-004", "emp-005"]
+}

@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/intent.schema.json",
+  "title": "SITORA Intent",
+  "description": "Strategic intent: a versioned, attributable, scoped requirement representing what the organization intends, requires, permits, prohibits, prioritizes, or expects.",
+  "type": "object",
+  "required": ["id", "version", "statement", "scope", "owner", "authoritativeSource", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable identifier for this intent (e.g., obligation id)."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this intent statement.",
+      "examples": ["1.0.0"]
+    },
+    "statement": {
+      "type": "string",
+      "description": "Human-readable statement of the intent / obligation."
+    },
+    "scope": {
+      "type": "object",
+      "description": "Defined population and time period this intent applies to.",
+      "required": ["population", "period"],
+      "additionalProperties": false,
+      "properties": {
+        "population": {
+          "type": "string",
+          "description": "Defined population (e.g., 'privileged-access workforce', 'managers')."
+        },
+        "period": {
+          "type": "string",
+          "description": "Time period (e.g., '2026-Q1' or 'rolling-90d')."
+        }
+      }
+    },
+    "owner": {
+      "type": "string",
+      "description": "Accountable owner of this intent (role or named entity)."
+    },
+    "authoritativeSource": {
+      "type": "string",
+      "description": "System or document of record for this intent (e.g., policy id)."
+    },
+    "createdAt": {
+      "type": "string",
+      "format": "date-time"
+    }
+  }
+}

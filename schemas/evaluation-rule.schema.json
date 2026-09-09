@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/evaluation-rule.schema.json",
+  "title": "SITORA Evaluation Rule",
+  "description": "A deterministic rule that applies declared logic to defined evidence and produces a traceable result. AI may assist extraction/classification, but the rule itself is inspectable and reproducible.",
+  "type": "object",
+  "required": ["id", "intentId", "description", "predicate", "passStatus"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string"},
+    "intentId": {"type": "string", "description": "Intent this rule evaluates."},
+    "description": {"type": "string", "description": "Human-readable rule statement."},
+    "predicate": {
+      "type": "object",
+      "description": "Structured, deterministic predicate (no eval).",
+      "required": ["op"],
+      "additionalProperties": true,
+      "properties": {
+        "op": {
+          "type": "string",
+          "enum": ["exists", "equals", "gte", "lte", "before", "after", "matches", "all", "any", "none"]
+        },
+        "path": {"type": "string", "description": "Dotted path into evidence.value (e.g., 'completed')."},
+        "value": {"description": "Comparison value for equals/gte/lte/before/after/matches."}
+      }
+    },
+    "passStatus": {
+      "type": "string",
+      "enum": ["aligned", "drifting"],
+      "description": "Status when the predicate holds."
+    },
+    "failStatus": {
+      "type": "string",
+      "enum": ["drifting", "incomplete", "conflicting", "unverifiable"],
+      "description": "Status when the predicate does not hold. Defaults to 'drifting'."
+    },
+    "requiresEvidence": {
+      "type": "boolean",
+      "default": true,
+      "description": "If true and no evidence is present, status is 'incomplete'."
+    }
+  }
+}

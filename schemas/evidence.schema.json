@@ -1,0 +1,59 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/evidence.schema.json",
+  "title": "SITORA Evidence",
+  "description": "Attributable operational evidence retaining source, provenance, time, access context, and relevance.",
+  "type": "object",
+  "required": ["id", "intentId", "subject", "source", "retrievedAt", "value"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique evidence record id."
+    },
+    "intentId": {
+      "type": "string",
+      "description": "Reference to the intent this evidence pertains to."
+    },
+    "subject": {
+      "type": "string",
+      "description": "The entity the evidence is about (e.g., employee id, role, system)."
+    },
+    "source": {
+      "type": "object",
+      "required": ["system", "recordType"],
+      "additionalProperties": false,
+      "properties": {
+        "system": {
+          "type": "string",
+          "description": "System of record (e.g., 'LMS', 'HRIS', 'IAM')."
+        },
+        "recordType": {
+          "type": "string",
+          "description": "Record type within the source system."
+        },
+        "recordId": {
+          "type": "string",
+          "description": "Native record identifier in the source system."
+        }
+      }
+    },
+    "retrievedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "asOf": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Point in time the evidence reflects (may differ from retrieval)."
+    },
+    "value": {
+      "description": "The evidence payload (typed per evaluation rule).",
+      "examples": [{"completed": true, "completionDate": "2026-02-14"}]
+    },
+    "provenance": {
+      "type": ["string", "null"],
+      "description": "Access context / provenance note (e.g., 'read-only export, behind-login'). Null provenance marks evidence as not attributable (Unverifiable)."
+    }
+  }
+}

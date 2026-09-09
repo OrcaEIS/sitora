@@ -1,0 +1,24 @@
+SITORA — Strategic Intent to Operational Reality Alignment
+Copyright 2026 OrcaEIS
+
+This product includes software and specification artifacts developed by
+OrcaEIS (https://orcaeis.com).
+
+========================================================================
+Third-party attributions
+========================================================================
+
+This project currently has no third-party dependencies requiring
+attribution. When third-party libraries, schemas, or content are added,
+their names, versions, license, and copyright notices must be recorded
+here, and each dependency's license must be verified compatible with
+Apache-2.0 redistribution.
+
+========================================================================
+Trademarks
+========================================================================
+
+"OrcaEIS", "SITORA", and "OrcaTrain" are trademarks of OrcaEIS.
+This project's source license (Apache-2.0) does not grant permission to
+use these marks except as required to describe the origin of the Work.
+See TRADEMARKS.md for the full trademark usage policy.

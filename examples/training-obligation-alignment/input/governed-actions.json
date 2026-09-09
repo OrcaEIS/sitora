@@ -1,0 +1,22 @@
+{
+  "actions": [
+    {
+      "id": "action-remediation-emp-002",
+      "findingId": "finding-obligation-sec-awareness-001-emp-002",
+      "type": "remediation",
+      "owner": "L&D operations",
+      "status": "open",
+      "dueDate": "2026-03-15",
+      "createdAt": "2026-02-20T10:05:00Z"
+    },
+    {
+      "id": "action-escalation-emp-004",
+      "findingId": "finding-obligation-sec-awareness-001-emp-004",
+      "type": "escalation",
+      "owner": "Data governance",
+      "status": "open",
+      "dueDate": "2026-03-01",
+      "createdAt": "2026-02-20T10:05:00Z"
+    }
+  ]
+}

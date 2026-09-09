@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/connector-contract.schema.json",
+  "title": "SITORA Connector Interface Contract",
+  "description": "Open interface contract for evidence-source connectors. The interface is open; the enterprise implementation is commercial OrcaEIS.",
+  "type": "object",
+  "required": ["id", "version", "operations"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string"},
+    "version": {"type": "string"},
+    "description": {"type": "string"},
+    "operations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "request", "response"],
+        "additionalProperties": false,
+        "properties": {
+          "name": {"type": "string"},
+          "description": {"type": "string"},
+          "request": {"type": "object"},
+          "response": {"type": "object"}
+        }
+      }
+    },
+    "auth": {"type": "object"},
+    "dataContract": {"type": "object"}
+  }
+}

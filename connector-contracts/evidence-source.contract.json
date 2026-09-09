@@ -1,0 +1,33 @@
+{
+  "id": "connector-contract-evidence-source",
+  "version": "0.1.0",
+  "description": "Open interface contract that any evidence source must implement to feed the SITORA evaluation loop. The interface is open; the enterprise implementation (live connectors, credential handling, behind-login collection) is commercial OrcaEIS.",
+  "operations": [
+    {
+      "name": "listEvidence",
+      "description": "Return evidence records matching an intent and scope.",
+      "request": {
+        "intentId": "string",
+        "scope": {"population": "string", "period": "string"},
+        "asOf": "date-time (optional)"
+      },
+      "response": {
+        "evidence": "Evidence[]"
+      }
+    },
+    {
+      "name": "healthCheck",
+      "description": "Report whether the connector can reach its source system.",
+      "request": {},
+      "response": {"status": "ok | degraded | unreachable"}
+    }
+  ],
+  "auth": {
+    "model": "delegated, read-only",
+    "note": "Credential handling and behind-login access are implemented by the commercial OrcaEIS control plane, not by this open contract."
+  },
+  "dataContract": {
+    "evidenceSchema": "../schemas/evidence.schema.json",
+    "noSensitiveDataInInterface": true
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/finding.schema.json",
+  "title": "SITORA Finding",
+  "description": "An evidence-backed alignment finding: the governed conclusion of a SITORA evaluation.",
+  "type": "object",
+  "required": ["id", "intentId", "subject", "status", "evaluatedAt", "ruleResults"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "intentId": {
+      "type": "string"
+    },
+    "subject": {
+      "type": "string",
+      "description": "Entity the finding applies to (e.g., employee id, role group)."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["aligned", "drifting", "incomplete", "conflicting", "unverifiable"],
+      "description": "Worst-case status per precedence (unverifiable > conflicting > incomplete > drifting > aligned)."
+    },
+    "evaluatedAt": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "ruleResults": {
+      "type": "array",
+      "description": "Per-rule outcomes and the evidence considered.",
+      "items": {
+        "type": "object",
+        "required": ["ruleId", "status", "evidenceIds"],
+        "additionalProperties": false,
+        "properties": {
+          "ruleId": {"type": "string"},
+          "status": {"type": "string", "enum": ["aligned", "drifting", "incomplete", "conflicting", "unverifiable"]},
+          "evidenceIds": {"type": "array", "items": {"type": "string"}},
+          "detail": {"type": "string"}
+        }
+      }
+    },
+    "summary": {
+      "type": "string",
+      "description": "Explainable summary of why this status was reached."
+    }
+  }
+}

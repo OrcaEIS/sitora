@@ -1,0 +1,138 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest jsonschema cyclonedx-bom
+      - name: Regenerate SBOMs (CycloneDX + SPDX)
+        run: |
+          # Clean dependency venv: jsonschema + pytest only (true dep tree, no tooling)
+          python -m venv .dep-venv
+          .dep-venv/bin/pip install -q jsonschema pytest
+          .dep-venv/bin/pip freeze > requirements.lock
+          # CycloneDX (tooling in the main environment)
+          cyclonedx-py requirements requirements.lock --output-format json --output-file sbom.cdx.json
+          # Enrich with SPDX licenses + sitora metadata
+          .dep-venv/bin/python generate_cdx.py
+          # SPDX 2.3
+          .dep-venv/bin/python generate_spdx.py
+          # human-readable summary
+          python generate_sbom_summary.py
+      - name: Naming-discipline check (no Orca-prefixed agent leakage)
+        run: |
+          python - <<'PY'
+          import re, sys
+          from pathlib import Path
+          # Only OrcaEIS (the company/trademark) and OrcaTrain (the commercial
+          # application, in boundary/trademark contexts) may appear in this repo.
+          ALLOWED = {"OrcaEIS", "OrcaTrain"}
+          pattern = re.compile(r"\bOrca[A-Z][A-Za-z0-9]+")
+          # Directories to skip; only scan the working tree of the open repo.
+          SKIP_DIRS = {".git", ".dep-venv", "__pycache__", ".pytest_cache", "node_modules"}
+          # File extensions to inspect.
+          EXTS = {".py", ".md", ".json", ".yml", ".yaml", ".toml", ".txt"}
+          # LICENSE and NOTICE are extensionless but should be scanned.
+          EXTRA_FILES = {"LICENSE", "NOTICE"}
+          # CONTRIBUTING.md necessarily names the disallowed names to explain
+          # the discipline itself; excluded by design.
+          SKIP_FILES = {"CONTRIBUTING.md"}
+          violations = []
+          for path in Path(".").rglob("*"):
+              if not path.is_file():
+                  continue
+              if any(part in SKIP_DIRS for part in path.parts):
+                  continue
+              if path.suffix not in EXTS and path.name not in EXTRA_FILES:
+                  continue
+              if path.name in SKIP_FILES:
+                  continue
+              try:
+                  text = path.read_text(encoding="utf-8", errors="ignore")
+              except Exception:
+                  continue
+              for m in pattern.finditer(text):
+                  name = m.group(0)
+                  if name in ALLOWED:
+                      continue
+                  # Report first occurrence per file+name to keep output readable.
+                  key = (str(path), name)
+                  if key not in violations:
+                      violations.append(key)
+          if violations:
+              print("Naming-discipline check FAILED. Disallowed Orca-prefixed names found:")
+              for path, name in violations:
+                  print(f"  {path}: {name}")
+              print("See CONTRIBUTING.md §1.1 for the naming discipline.")
+              sys.exit(1)
+          print("Naming-discipline check passed: only OrcaEIS / OrcaTrain present.")
+          PY
+      - name: Run conformance suite (incl. sandbox-safety guard)
+        run: python -m pytest -q
+      - name: Sandbox-safety trust guard
+        run: python -m pytest -q conformance/test_sandbox_safety.py -v
+      - name: Run the demo (smoke test)
+        run: python -m evaluator --demo
+      - name: Generate demo findings for schema validation
+        run: python -m evaluator --demo --json --out examples/training-obligation-alignment/output/findings.json
+      - name: Validate schemas against fixtures
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          try:
+              import jsonschema
+          except ImportError:
+              print("jsonschema not installed; skipping schema validation")
+              raise SystemExit(0)
+          def load(p): return json.loads(Path(p).read_text())
+          checks = [
+              ("schemas/intent.schema.json", "examples/training-obligation-alignment/input/intent.json", None),
+              ("schemas/evaluation-rule.schema.json", "examples/training-obligation-alignment/input/rules.json", "rules"),
+              ("schemas/evidence.schema.json", "examples/training-obligation-alignment/input/evidence.json", "evidence"),
+              ("schemas/finding.schema.json", "examples/training-obligation-alignment/output/findings.json", None),
+              ("schemas/governed-action.schema.json", "examples/training-obligation-alignment/input/governed-actions.json", "actions"),
+              ("schemas/audit-outcome.schema.json", "examples/training-obligation-alignment/input/audit-outcomes.json", "outcomes"),
+              ("connector-contracts/connector-contract.schema.json", "connector-contracts/evidence-source.contract.json", None),
+          ]
+          for sname, tname, key in checks:
+              schema = load(sname); target = load(tname)
+              instances = target if isinstance(target, list) else [target]
+              if key and isinstance(target, dict): instances = target.get(key, [target])
+              for inst in instances: jsonschema.validate(inst, schema)
+              print(f"OK  {tname}  ->  {sname}")
+          print("All schema validations passed.")
+          PY
+      - name: Validate SBOM against CycloneDX schema
+        run: |
+          curl -sL -o /tmp/bom-1.6.schema.json https://raw.githubusercontent.com/CycloneDX/specification/master/schema/bom-1.6.schema.json
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          import jsonschema
+          schema = json.loads(Path("/tmp/bom-1.6.schema.json").read_text())
+          bom = json.loads(Path("sbom.cdx.json").read_text())
+          jsonschema.validate(bom, schema)
+          print("SBOM validates against CycloneDX", bom["specVersion"])
+          PY
+      - name: Validate SPDX SBOM
+        run: |
+          pip install -q spdx-tools
+          pyspdxtools --infile sbom.spdx.json

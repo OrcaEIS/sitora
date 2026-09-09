@@ -1,0 +1,54 @@
+{
+  "evidence": [
+    {
+      "id": "ev-emp-001-lms",
+      "intentId": "obligation-sec-awareness-001",
+      "subject": "emp-001",
+      "source": {"system": "LMS", "recordType": "training-completion", "recordId": "lms-9001"},
+      "retrievedAt": "2026-02-20T10:00:00Z",
+      "asOf": "2026-02-20T10:00:00Z",
+      "value": {"completed": true, "completionDate": "2026-02-14"},
+      "provenance": "read-only export, behind-login, attributable to LMS system-of-record"
+    },
+    {
+      "id": "ev-emp-002-lms",
+      "intentId": "obligation-sec-awareness-001",
+      "subject": "emp-002",
+      "source": {"system": "LMS", "recordType": "training-completion", "recordId": "lms-9012"},
+      "retrievedAt": "2026-02-20T10:00:00Z",
+      "asOf": "2026-02-20T10:00:00Z",
+      "value": {"completed": true, "completionDate": "2025-05-03"},
+      "provenance": "read-only export, behind-login, attributable to LMS system-of-record"
+    },
+    {
+      "id": "ev-emp-004-lms",
+      "intentId": "obligation-sec-awareness-001",
+      "subject": "emp-004",
+      "source": {"system": "LMS", "recordType": "training-completion", "recordId": "lms-9044"},
+      "retrievedAt": "2026-02-20T10:00:00Z",
+      "asOf": "2026-02-20T10:00:00Z",
+      "value": {"completed": true, "completionDate": "2026-02-10"},
+      "provenance": "read-only export, behind-login, attributable to LMS system-of-record"
+    },
+    {
+      "id": "ev-emp-004-hris",
+      "intentId": "obligation-sec-awareness-001",
+      "subject": "emp-004",
+      "source": {"system": "HRIS", "recordType": "compliance-flag", "recordId": "hris-7741"},
+      "retrievedAt": "2026-02-20T10:00:00Z",
+      "asOf": "2026-02-20T10:00:00Z",
+      "value": {"completed": false, "completionDate": null},
+      "provenance": "read-only export, behind-login, attributable to HRIS system-of-record"
+    },
+    {
+      "id": "ev-emp-005-lms",
+      "intentId": "obligation-sec-awareness-001",
+      "subject": "emp-005",
+      "source": {"system": "LMS", "recordType": "training-completion"},
+      "retrievedAt": "2026-02-20T10:00:00Z",
+      "asOf": "2026-02-20T10:00:00Z",
+      "value": {"completed": true, "completionDate": "2026-02-01"},
+      "provenance": null
+    }
+  ]
+}

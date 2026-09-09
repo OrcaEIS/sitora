@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/governed-action.schema.json",
+  "title": "SITORA Governed Action",
+  "description": "An action created by a finding: ownership, escalation, approvals, exception handling, and remediation.",
+  "type": "object",
+  "required": ["id", "findingId", "type", "owner", "status", "createdAt"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string"},
+    "findingId": {"type": "string"},
+    "type": {
+      "type": "string",
+      "enum": ["remediation", "exception", "escalation", "approval", "review"],
+      "description": "Type of governed action."
+    },
+    "owner": {"type": "string", "description": "Actionable owner (role or person)."},
+    "status": {
+      "type": "string",
+      "enum": ["open", "in_progress", "blocked", "resolved", "closed"]
+    },
+    "dueDate": {"type": "string", "format": "date"},
+    "createdAt": {"type": "string", "format": "date-time"}
+  }
+}

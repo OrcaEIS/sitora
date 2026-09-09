@@ -1,0 +1,22 @@
+{
+  "rules": [
+    {
+      "id": "rule-completed",
+      "intentId": "obligation-sec-awareness-001",
+      "description": "Training record shows completion = true.",
+      "predicate": {"op": "equals", "path": "completed", "value": true},
+      "passStatus": "aligned",
+      "failStatus": "drifting",
+      "requiresEvidence": true
+    },
+    {
+      "id": "rule-current",
+      "intentId": "obligation-sec-awareness-001",
+      "description": "Completion date is after the period start.",
+      "predicate": {"op": "after", "path": "completionDate", "value": "2026-01-01"},
+      "passStatus": "aligned",
+      "failStatus": "drifting",
+      "requiresEvidence": true
+    }
+  ]
+}

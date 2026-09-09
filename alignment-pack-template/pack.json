@@ -1,0 +1,57 @@
+{
+  "id": "pack.training-obligation-alignment",
+  "version": "1.0.0",
+  "alignmentQuestion": "For a defined population and period, are required training obligations completed, current, evidenced, and consistent with the stated standard?",
+  "intent": {
+    "obligationId": "TODO-obligation-id",
+    "obligationVersion": "TODO-1.0.0",
+    "authoritativeSource": "TODO-policy-or-standard-reference",
+    "statement": "TODO: the intent this pack evaluates."
+  },
+  "scope": {
+    "population": "TODO: defined population (e.g. privileged-access workforce)",
+    "period": "TODO: e.g. 2026-Q1",
+    "boundaries": "TODO: explicit exclusions and out-of-scope items"
+  },
+  "evidenceSources": [
+    {
+      "name": "TODO: LMS",
+      "systemOfRecord": true,
+      "fieldMapping": { "TODO-source-field": "TODO-sitora-evidence-attribute" }
+    },
+    {
+      "name": "TODO: HRIS",
+      "systemOfRecord": false,
+      "fieldMapping": { "TODO-source-field": "TODO-sitora-evidence-attribute" }
+    }
+  ],
+  "evaluationRules": [
+    {
+      "id": "TODO-rule-completion",
+      "description": "TODO: evidence must show completion within the period.",
+      "predicate": "exists",
+      "statusOnPass": "aligned",
+      "statusOnFail": "incomplete"
+    }
+  ],
+  "thresholds": {
+    "aligned": "All required evidence present and current.",
+    "drifting": "Evidence present but stale or at risk.",
+    "incomplete": "Required evidence missing.",
+    "conflicting": "Evidence sources disagree.",
+    "unverifiable": "Evidence lacks attributable provenance."
+  },
+  "ownership": {
+    "findingOwner": "TODO: owner role",
+    "reviewSla": "TODO: e.g. 5 business days",
+    "exceptionProcess": "TODO: approved exception handling"
+  },
+  "remediationActions": [
+    { "status": "drifting", "actionType": "Remediation", "template": "TODO: assign recertification" },
+    { "status": "incomplete", "actionType": "Review", "template": "TODO: confirm assignment and evidence source" },
+    { "status": "conflicting", "actionType": "Escalation", "template": "TODO: reconcile sources" },
+    { "status": "unverifiable", "actionType": "Review", "template": "TODO: establish evidence provenance" }
+  ],
+  "evidenceRetention": "TODO: retention and audit-output expectations",
+  "reportOutputs": ["executive-readout", "evidence-gap-inventory", "remediation-register"]
+}

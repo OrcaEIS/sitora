@@ -1,0 +1,130 @@
+[
+  {
+    "id": "finding-obligation-sec-awareness-001-emp-001",
+    "intentId": "obligation-sec-awareness-001",
+    "subject": "emp-001",
+    "status": "aligned",
+    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "ruleResults": [
+      {
+        "ruleId": "rule-completed",
+        "status": "aligned",
+        "evidenceIds": [
+          "ev-emp-001-lms"
+        ],
+        "detail": "Predicate held."
+      },
+      {
+        "ruleId": "rule-current",
+        "status": "aligned",
+        "evidenceIds": [
+          "ev-emp-001-lms"
+        ],
+        "detail": "Predicate held."
+      }
+    ],
+    "summary": "Subject 'emp-001' evaluated as ALIGNED across 2 rule(s)."
+  },
+  {
+    "id": "finding-obligation-sec-awareness-001-emp-002",
+    "intentId": "obligation-sec-awareness-001",
+    "subject": "emp-002",
+    "status": "drifting",
+    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "ruleResults": [
+      {
+        "ruleId": "rule-completed",
+        "status": "aligned",
+        "evidenceIds": [
+          "ev-emp-002-lms"
+        ],
+        "detail": "Predicate held."
+      },
+      {
+        "ruleId": "rule-current",
+        "status": "drifting",
+        "evidenceIds": [
+          "ev-emp-002-lms"
+        ],
+        "detail": "Predicate did not hold."
+      }
+    ],
+    "summary": "Subject 'emp-002' evaluated as DRIFTING across 2 rule(s)."
+  },
+  {
+    "id": "finding-obligation-sec-awareness-001-emp-003",
+    "intentId": "obligation-sec-awareness-001",
+    "subject": "emp-003",
+    "status": "incomplete",
+    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "ruleResults": [
+      {
+        "ruleId": "rule-completed",
+        "status": "incomplete",
+        "evidenceIds": [],
+        "detail": "No evidence present."
+      },
+      {
+        "ruleId": "rule-current",
+        "status": "incomplete",
+        "evidenceIds": [],
+        "detail": "No evidence present."
+      }
+    ],
+    "summary": "Subject 'emp-003' evaluated as INCOMPLETE across 2 rule(s)."
+  },
+  {
+    "id": "finding-obligation-sec-awareness-001-emp-004",
+    "intentId": "obligation-sec-awareness-001",
+    "subject": "emp-004",
+    "status": "conflicting",
+    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "ruleResults": [
+      {
+        "ruleId": "rule-completed",
+        "status": "conflicting",
+        "evidenceIds": [
+          "ev-emp-004-lms",
+          "ev-emp-004-hris"
+        ],
+        "detail": "Attributable evidence sources disagree."
+      },
+      {
+        "ruleId": "rule-current",
+        "status": "conflicting",
+        "evidenceIds": [
+          "ev-emp-004-lms",
+          "ev-emp-004-hris"
+        ],
+        "detail": "Attributable evidence sources disagree."
+      }
+    ],
+    "summary": "Subject 'emp-004' evaluated as CONFLICTING across 2 rule(s)."
+  },
+  {
+    "id": "finding-obligation-sec-awareness-001-emp-005",
+    "intentId": "obligation-sec-awareness-001",
+    "subject": "emp-005",
+    "status": "unverifiable",
+    "evaluatedAt": "2026-09-09T00:04:18Z",
+    "ruleResults": [
+      {
+        "ruleId": "rule-completed",
+        "status": "unverifiable",
+        "evidenceIds": [
+          "ev-emp-005-lms"
+        ],
+        "detail": "Evidence present but lacks attributable provenance."
+      },
+      {
+        "ruleId": "rule-current",
+        "status": "unverifiable",
+        "evidenceIds": [
+          "ev-emp-005-lms"
+        ],
+        "detail": "Evidence present but lacks attributable provenance."
+      }
+    ],
+    "summary": "Subject 'emp-005' evaluated as UNVERIFIABLE across 2 rule(s)."
+  }
+]

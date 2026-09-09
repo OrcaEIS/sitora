@@ -1,0 +1,12 @@
+{
+  "id": "obligation-sec-awareness-001",
+  "version": "1.0.0",
+  "statement": "All privileged-access personnel must complete Security Awareness Training and keep it current within the defined period.",
+  "scope": {
+    "population": "privileged-access workforce",
+    "period": "2026-Q1"
+  },
+  "owner": "Head of Information Security",
+  "authoritativeSource": "policy-INFOSEC-0042",
+  "createdAt": "2026-01-02T09:00:00Z"
+}

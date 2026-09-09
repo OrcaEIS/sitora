@@ -1,0 +1,20 @@
+{
+  "outcomes": [
+    {
+      "id": "outcome-emp-001",
+      "findingId": "finding-obligation-sec-awareness-001-emp-001",
+      "outcome": "resolved",
+      "resolutionEvidenceIds": ["ev-emp-001-lms"],
+      "retention": {"policy": "retention-INFOSEC-001", "retainUntil": "2031-02-20"},
+      "recordedAt": "2026-02-20T10:10:00Z"
+    },
+    {
+      "id": "outcome-emp-002",
+      "findingId": "finding-obligation-sec-awareness-001-emp-002",
+      "outcome": "remediated",
+      "resolutionEvidenceIds": [],
+      "retention": {"policy": "retention-INFOSEC-001", "retainUntil": "2031-02-20"},
+      "recordedAt": "2026-02-20T10:10:00Z"
+    }
+  ]
+}

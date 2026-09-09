@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://orcaeis.com/schemas/alignment-pack.schema.json",
+  "title": "SITORA Alignment Pack",
+  "description": "A versioned, governed configuration that defines one enterprise alignment question. Generic template — fill the TODO placeholders.",
+  "type": "object",
+  "required": ["id", "version", "alignmentQuestion", "intent", "scope", "evidenceSources", "evaluationRules"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Stable pack identifier, e.g. 'pack.security-awareness-training'."
+    },
+    "version": {
+      "type": "string",
+      "description": "Semantic version of this pack configuration.",
+      "example": "1.0.0"
+    },
+    "alignmentQuestion": {
+      "type": "string",
+      "description": "The single alignment question this pack answers."
+    },
+    "intent": {
+      "type": "object",
+      "description": "Where strategic intent lives.",
+      "properties": {
+        "obligationId": { "type": "string", "description": "TODO: obligation identifier." },
+        "obligationVersion": { "type": "string", "description": "TODO: obligation version." },
+        "authoritativeSource": { "type": "string", "description": "TODO: policy/standard reference." },
+        "statement": { "type": "string", "description": "TODO: intent statement." }
+      }
+    },
+    "scope": {
+      "type": "object",
+      "description": "In-scope population and period.",
+      "properties": {
+        "population": { "type": "string", "description": "TODO: defined population." },
+        "period": { "type": "string", "description": "TODO: e.g. 2026-Q1." },
+        "boundaries": { "type": "string", "description": "TODO: explicit exclusions." }
+      }
+    },
+    "evidenceSources": {
+      "type": "array",
+      "description": "Named evidence sources and system-of-record designation.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": { "type": "string" },
+          "systemOfRecord": { "type": "boolean" },
+          "fieldMapping": { "type": "object", "description": "TODO: source field -> SITORA evidence attribute." }
+        }
+      }
+    },
+    "evaluationRules": {
+      "type": "array",
+      "description": "Deterministic rules applied to evidence. Each item validates against schemas/evaluation-rule.schema.json.",
+      "items": { "type": "object" }
+    },
+    "thresholds": {
+      "type": "object",
+      "description": "Finding thresholds and severity guidance.",
+      "properties": {
+        "aligned": { "type": "string" },
+        "drifting": { "type": "string" },
+        "incomplete": { "type": "string" },
+        "conflicting": { "type": "string" },
+        "unverifiable": { "type": "string" }
+      }
+    },
+    "ownership": {
+      "type": "object",
+      "description": "Finding owner, review SLA, and exception process.",
+      "properties": {
+        "findingOwner": { "type": "string", "description": "TODO: owner role." },
+        "reviewSla": { "type": "string", "description": "TODO: e.g. 5 business days." },
+        "exceptionProcess": { "type": "string", "description": "TODO: approved exception handling." }
+      }
+    },
+    "remediationActions": {
+      "type": "array",
+      "description": "Remediation action templates per status.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "status": { "type": "string", "enum": ["drifting", "incomplete", "conflicting", "unverifiable"] },
+          "actionType": { "type": "string" },
+          "template": { "type": "string" }
+        }
+      }
+    },
+    "evidenceRetention": {
+      "type": "string",
+      "description": "TODO: retention and audit-output expectations."
+    },
+    "reportOutputs": {
+      "type": "array",
+      "description": "Executive and audit report formats produced.",
+      "items": { "type": "string" }
+    }
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://sitora.orcaeis.com/schemas/audit-outcome.schema.json",
+  "title": "SITORA Audit Outcome",
+  "description": "What happened after the finding: resolution evidence, historical traceability, and retention context.",
+  "type": "object",
+  "required": ["id", "findingId", "outcome", "recordedAt"],
+  "additionalProperties": false,
+  "properties": {
+    "id": {"type": "string"},
+    "findingId": {"type": "string"},
+    "outcome": {
+      "type": "string",
+      "enum": ["resolved", "accepted_risk", "exception_granted", "remediated", "unresolved"]
+    },
+    "resolutionEvidenceIds": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Evidence records demonstrating resolution."
+    },
+    "retention": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "policy": {"type": "string", "description": "Retention policy id (commercial OrcaEIS manages enforcement)."},
+        "retainUntil": {"type": "string", "format": "date"}
+      }
+    },
+    "recordedAt": {"type": "string", "format": "date-time"}
+  }
+}
