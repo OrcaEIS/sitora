@@ -1,10 +1,11 @@
 # SITORA
 
-**S**trategic **I**ntent **T**o **O**perational **R**eality **A**lignment.
+Strategic Intent → Operational Reality Alignment.
 
 SITORA is the open-core alignment framework behind
-[OrcaEIS](https://orcaeis.com) — Enterprise Alignment Infrastructure for the
-AI-operated enterprise. It defines how to represent and evaluate whether an
+[OrcaEIS](https://orcaeis.com), which provides Continuous Enterprise Alignment
+Infrastructure for the AI-operated enterprise. SITORA defines how to represent
+and evaluate whether an
 organization's operational reality remains aligned with its strategic intent,
 using attributable evidence and deterministic checks.
 

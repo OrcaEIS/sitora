@@ -22,8 +22,8 @@ design-partner and community feedback. Versions follow semantic versioning.
 
 ### v0.2 (Phase 3–4)
 
-- Refined taxonomy with separate dimensions: alignment status, evidence
-  sufficiency, materiality, confidence
+- Additional evaluation dimensions for evidence sufficiency, materiality, and
+  confidence, subject to the RFC process
 - Conformance test suite for evaluators and Alignment Packs
 - First community-contributed schema extensions
 - Improved reference evaluator (rule composition, evidence provenance)
