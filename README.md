@@ -89,6 +89,19 @@ See [COMMERCIAL_BOUNDARY.md](COMMERCIAL_BOUNDARY.md). In short:
   management, deployment orchestration, partner certification, and managed
   implementation.
 
+## Try SITORA with your use case
+
+Exploring whether operational reality remains aligned with strategic intent?
+
+Run the bundled training-obligation example, then tell us what alignment
+question you would like to evaluate in your organization.
+
+We welcome feedback from developers and conversations with potential
+OrcaEIS design partners.
+
+Contact Stephanie Sanders at stephanie@orcaeis.com.
+Please do not include confidential data or credentials in public issues.
+
 ## Contributing
 
 Contributions require a signed CLA under the contribution process. DCO
